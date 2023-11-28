@@ -7,28 +7,20 @@ Created on Tue Nov 28 13:04:44 2023
 """
 
 import xarray as xr
-
 import cartopy.crs as ccrs
 import numpy as np
 import matplotlib.pyplot as plt
 import cartopy.feature as cfeature
 
-
-
 font = {'family' : 'Avenir',
         'weight' : 'normal',
         'size'   : 25}
 
-
-
 adcp_data = xr.open_dataset('focus_adcp_new.nc')
-
-
 
 """
 
 Now we can explore the dataset and see what variables are available 
-
 
 adcp_data['time']
 adcp_data['lat']
@@ -44,9 +36,7 @@ var = ['u', 'v']
 for i, vari in enumerate(var): 
     adcp_data[vari].plot(y='depth', ylim=(800,0), vmin=-2, vmax=2, cmap='cmo.balance', ax=[ax1, bx1][i])
 
-
-
-
+######################
 fig, ax = plt.subplots(figsize=(20,11), subplot_kw={'projection':ccrs.PlateCarree()})
 ax.add_feature(cfeature.LAND)
 ax.add_feature(cfeature.COASTLINE)
@@ -65,8 +55,7 @@ quivplt = adcp_data.isel(time=np.arange(0, len(adcp_data.time), 8),
                                                                            pivot='tail', 
                                                                            hue='tr_temp',
                                                                            cmap='autumn_r')                                                                         
-                                                                           
-                                                                           
+                                                                                                                                                   
                                                                            
 '''
 Bathymetry stuff if we have time 
