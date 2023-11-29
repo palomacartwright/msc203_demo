@@ -80,6 +80,27 @@ avg_temp.attrs = {'title': 'average temperature over three days'}
 avg_temp
 
 
+"""
+
+So now we have two xarray Data Arrays and we can combine them to give us an xarray Dataset 
+
+"""
+
+
+# make dictionaries with variables and attributes
+data_vars = {'avg_temp': avg_temp,
+            'temp': temp}
+
+attrs = {'title':'temperature data at weather stations: daily and and average',
+        'description':'simple example of an xarray.Dataset'}
+
+# create xarray.Dataset
+temp_dataset = xr.Dataset( data_vars = data_vars,
+                        attrs = attrs)
+
+
+
+
 
 
 
